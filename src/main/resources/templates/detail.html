@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>路线详细</title>
+    <style>
+        #footer {
+            height: 40px;
+            line-height: 40px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background: #F0F0F0;
+            color: #2F4056;
+            font-family: Arial;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<script th:src="@{|js/jquery-2.1.4.min.js|}"></script>
+<link rel="stylesheet" th:href="@{|layui/css/layui.css|}"  media="all"/>
+<body bgcolor="#F0F0F0">
+    <div th:each="tran,tranStat : ${tranPlan}"  style='margin-left:35px'>
+        <h2 class="layui-timeline-title" th:text="'方案'+${tranStat.count} + ':'"></h2>
+        <div th:each="tranDetail,tranDetailStat: ${tran}">
+            <div th:if="${tranDetailStat.count} == 1">
+                <h2 class="layui-timeline-title" th:text="'约' + ${tranDetail['duration']} + '分钟'"></h2>
+            </div>
+        </div>
+        <div th:each="tranDetail: ${tran}">
+            <ul class="layui-timeline">
+                <li class="layui-timeline-item">
+                    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                    <div class="layui-timeline-content layui-text">
+                        <h3 class="layui-timeline-title" th:text="${tranDetail['busName']}"></h3>
+                        <p>
+                            <br th:text="'上车:' + ${tranDetail['departureStopName']}">
+                            <i class="layui-icon">&#xe61a;</i>
+                            <div th:each="viaStop,viaStopStat: ${tranDetail['viaStops']}">
+                                <br th:text="${viaStop}">
+                                <i class="layui-icon">&#xe61a;</i>
+                            </div>
+                            <br th:text="'下车:' + ${tranDetail['arrivalStopName']}">
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="footer">©2018-2019 Wang Xiaodong. All Rights Reserved. </div>
+</body>
+</html>
