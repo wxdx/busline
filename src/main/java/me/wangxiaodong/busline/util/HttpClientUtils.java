@@ -1,4 +1,4 @@
-package site.json.busline.util;
+package me.wangxiaodong.busline.util;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;

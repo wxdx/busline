@@ -1,4 +1,4 @@
-package site.json.busline;
+package me.wangxiaodong.busline;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package site.json.busline;
+package me.wangxiaodong.busline;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
